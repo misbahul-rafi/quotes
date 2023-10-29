@@ -4,6 +4,7 @@ let header = document.querySelector("header");
 let quotes = document.getElementById('quotes');;
 let logo = document.querySelector("#navbar .container h1");
 let body = document.querySelector('body');
+let desktopOrientation = "landscape"
 
 track.addEventListener('wheel', function(event){
   let deltaY = event.deltaY;
@@ -18,6 +19,13 @@ document.addEventListener('wheel', function(event){
     track.style.transform = 'scale(100%, 100%)';
   }, 100)
 })
+
+if (window.innerWidth <= 720) {
+  // Kode JavaScript untuk tindakan ketika lebar jendela di bawah 600px
+  document.body.style.backgroundColor = 'lightblue';
+  desktopOrientation = "portrait";
+  document.body.style.fontSize = '16px';
+}
 
 window.addEventListener('scroll', () => {
     if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -47,7 +55,7 @@ setTimeout(() => {
 
 $.ajax({
   method: 'GET',
-  url: 'https://api.unsplash.com/photos/random/?orientation=landscape&count=20',
+  url: `https://api.unsplash.com/photos/random/?orientation=${desktopOrientation}&count=20`,
   headers: { 'Authorization': 'Client-ID xAgCHAqL90zYj3Y0d-tJO06ZWLs9Ta9oWYWc5r51FoE'},
   contentType: 'application/json',
   success: function(result) {
