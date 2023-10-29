@@ -11,7 +11,7 @@ body{
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
-  overflow: hidden;
+
 }
 header{
   transition: 0.5s;
@@ -51,7 +51,7 @@ header .container h1{
 }
 
 #image-track {
-  overflow: hidden;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.684);
   display: flex;
   border-radius: 20px;

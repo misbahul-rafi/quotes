@@ -9,7 +9,7 @@ let desktopOrientation = "landscape"
 track.addEventListener('wheel', function(event){
   let deltaY = event.deltaY;
   track.scrollLeft += deltaY;
-  event.preventDefault();
+  // event.preventDefault();
 });
 document.addEventListener('wheel', function(event){
   track.style.display = "flex";
