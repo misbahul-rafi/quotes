@@ -13,8 +13,9 @@ a{
 
 body{
   width: 100vw;
+  height: 100vh;
   background: url("https://images.unsplash.com/photo-1693560355258-1af2a69a9ccd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTkwOTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE2OTg1MzU4OTB8&ixlib=rb-4.0.3&q=80&w=1080");
-  background-size: 100vw;
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
