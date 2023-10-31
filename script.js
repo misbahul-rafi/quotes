@@ -40,10 +40,10 @@ function imageClick(){
         track.style.opacity = "0";
           setTimeout(function() {
             track.style.display = 'none';
-            showQuotes();
           }, 1000);
       })
     }
+    showQuotes();
   }, 2000);
 }
 
