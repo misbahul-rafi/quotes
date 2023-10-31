@@ -89,7 +89,7 @@ $.ajax({
     for(const i in myPics){
       const nama = myPics[i]['slug'];
       const link = myPics[i]['urls']['regular'];
-      const img = `<img class='image' src='${link}' loading='lazy' draggable='false' />`;
+      const img = `<img class='image' src='${link}' draggable='false' />`;
       addIdImage(link);
       track.insertAdjacentHTML('beforeend', img);
     }
