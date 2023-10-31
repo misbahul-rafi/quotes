@@ -73,7 +73,7 @@ header li{
 }
 
 #quotes{
-  display: hidden;
+  display: none;
   cursor: default;
   width: 60vw;
   min-height: 20vh;
@@ -82,7 +82,7 @@ header li{
   border-top: 2px solid rgb(11, 10, 10);
   border-bottom: 2px solid gray;
   border-radius: 20px;
-  position: relative;
+  position: absolute;
   left: calc(50vw - 60vw /2);
   top: 30vh;
   opacity: 1;
@@ -92,6 +92,7 @@ header li{
   color: #B9B4C7;
   font-size: 1rem;
   transition: 1s;
+  z-index: 99;
 }
 
 #quotes .content{
@@ -101,13 +102,19 @@ header li{
 .close{
   display: none;
   background-color: #18171dd2;
-  position: absolute;
   width: 100%;
   bottom: 0px;
   font-size: 1.2rem;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  position: absolute;
+
 }
 .close:hover{
   background-color: rgba(255, 0, 0, 0.622);
+}
+h1:hover{
+  background-color: aqua;
 }
 @media (max-width: 600px){
   html{
@@ -115,7 +122,5 @@ header li{
   }
   .close{
     display: block;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
   }
 }

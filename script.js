@@ -1,13 +1,13 @@
 const track = document.getElementById('image-track');
 const quotes = document.getElementById('quotes');
-const quotesContent = quotes.querySelector(".content");
-const quotesClose = quotes.querySelector(".close");
+const quotesContent = quotes.querySelector("#quotes .content");
+const quotesClose = quotes.querySelector("#quotes .close");
 const body = document.querySelector('body');
-let desktopOrientation = "landscape"
+let desktopOrientation = "landscape";
 
 document.addEventListener('wheel', showImage);
 quotesClose.addEventListener('click', showImage);
-track.addEventListener('click', imageClick());
+track.addEventListener('click', imageClick);
 
 if (window.innerWidth <= 720) {
   document.body.style.backgroundColor = 'lightblue';
@@ -22,7 +22,6 @@ track.addEventListener('wheel', function(event){
 
 function showImage(){
   track.style.display = "flex";
-  console.log("1")
   quotes.style.display = 'none';
   setTimeout(function(){
     track.style.opacity = "1";
@@ -41,7 +40,7 @@ function imageClick(){
         track.style.opacity = "0";
           setTimeout(function() {
             track.style.display = 'none';
-            showQutes();
+            showQuotes();
           }, 1000);
       })
     }
@@ -56,10 +55,9 @@ function addIdImage(imageID) {
   data.push(imageID);
   localStorage.setItem('data', JSON.stringify(data));
   let resultArray = JSON.parse(localStorage.getItem('data'));
-  // console.log("Berhasil menambahkan ID");
   return
 }
-function showQutes(){
+function showQuotes(){
   quotes.style.display = 'block';
   var category = 'happiness';
     $.ajax({
@@ -69,9 +67,8 @@ function showQutes(){
       contentType: 'application/json',
       success: function(result) {
         let myQuotes= result[0]['quote'];
-        if(quotes){
-          quotesContent.innerHTML = myQuotes;
-        }
+        quotesContent.innerHTML = myQuotes;
+        console.log(myQuotes);
       },
       error: function ajaxError(jqXHR) {
         console.error('Error: ', jqXHR.responseText);
@@ -99,7 +96,6 @@ $.ajax({
     if(jqXHR.responseText == "Rate Limit Exceeded"){
       // alert("Request Over");
       let localImg = JSON.parse(localStorage.getItem('data'));
-      // let i = [1,2,3,4,5];
       for(a of localImg){
         const img = `<img class='image' src='${a}' draggable='false' />`;
         track.insertAdjacentHTML('beforeend', img);
