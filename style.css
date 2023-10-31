@@ -3,6 +3,13 @@
   padding: 0;
   cursor: default;
 }
+html{
+  font-size: 18px;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
 
 body{
   width: 100vw;
@@ -11,43 +18,34 @@ body{
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
+  overflow: auto;
 
 }
 header{
-  transition: 0.5s;
-  position: relative;
-
-}
-header #navbar{
-  padding: 30px 10px 0;
-  color: rgb(42, 40, 40);
-  transition: 0.4s;
-  position: fixed;
-  width: 100%;
-  top: 0;
-}
-header .container{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  border-bottom: 2px solid #f86d03e1;
+  padding-top: 3vw;
+  color: #FFF6F4;
+  background-color: #18171dab;
+  box-shadow: 0px 3px 130px -22px rgba(245,245,245,0.65);
+  -webkit-box-shadow: 0px 3px 130px -22px rgba(245,245,245,0.65);
+  -moz-box-shadow: 0px 3px 130px -22px rgba(245,245,245,0.65);
 }
-header .container ul{
-  padding: 8px 0;
-  list-style-type: none;
+header h1{
+  font-size: 1.3rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+header ul{
   display: flex;
-  width: 350px;
+  flex-direction: row;
+  list-style: none;
+  width: 400px;
   justify-content: space-around;
 }
-header .container nav ul li{
-  float: left;
-  text-align: center;
-  text-decoration: none;
-  font-size: 14px;
-  border-radius: 4px;
-}
-header .container h1{
-  font-size: 35px;
-  font-weight: bold;
-  transition: 0.4s;
+header li{
+  padding: 5px;
+  font-size: 1rem;
 }
 
 #image-track {
@@ -76,22 +74,47 @@ header .container h1{
 #quotes{
   display: hidden;
   cursor: default;
-  width: 40vw;
-  height: 20vh;
+  width: 60vw;
+  min-height: 20vh;
   text-align: center;
   align-items: center;
-  padding: 30px;
   border-top: 2px solid rgb(11, 10, 10);
   border-bottom: 2px solid gray;
   border-radius: 20px;
-  position: absolute;
-  left: calc(50vw - 40vw /2);
+  position: relative;
+  left: calc(50vw - 60vw /2);
   top: 30vh;
   opacity: 1;
   transition: 1s;
   z-index: -99;
   background-color: #18171dab;
   color: #B9B4C7;
-  font-size: 1.4em;
+  font-size: 1rem;
   transition: 1s;
+}
+
+#quotes .content{
+  padding: 30px;
+}
+
+.close{
+  display: none;
+  background-color: #18171dd2;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  font-size: 1.2rem;
+}
+.close:hover{
+  background-color: rgba(255, 0, 0, 0.622);
+}
+@media (max-width: 600px){
+  html{
+    font-size: 15px;
+  }
+  .close{
+    display: block;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 }
