@@ -127,18 +127,11 @@ h1:hover{
   .close{
     display: block;
   }
+  #image-track{
+    overflow: auto;
+  }
 }
 
-@keyframes Hide {
-  0%{
-    scale : (100%, 100%);
-    opacity: 1;
-  }
-  100%{
-    scale: (0%, 0%);
-    opacity: 0;
-  }
-}
 @keyframes Show {
   0%{
     scale : (0%, 0%);
