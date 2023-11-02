@@ -3,16 +3,27 @@ const quotes = document.getElementById('quotes');
 const quotesContent = quotes.querySelector("#quotes .content");
 const quotesClose = quotes.querySelector("#quotes .close");
 const body = document.querySelector('body');
-let desktopOrientation = "landscape";
+let desktopOrientation = window.innerWidth <= 720 ? "portrait" : "landscape";
 
-document.addEventListener('wheel', showImage);
-quotesClose.addEventListener('click', showImage);
-track.addEventListener('click', imageClick);
+setTimeout(function(){
+  const testImages = document.querySelectorAll('.image');
+  testImages.forEach(function(image) {
+    image.addEventListener('click', function() {
+    console.log("Elemen gambar yang diklik:", this);
+    body.style.backgroundImage = `url(${this.src})`;
+    showContent(quotes, track);
+  });
+});
+}, 1000);
 
-if (window.innerWidth <= 720) {
-  document.body.style.backgroundColor = 'lightblue';
-  desktopOrientation = "portrait";
-}
+document.addEventListener('wheel', () =>{
+  showContent(track, quotes);
+  console.log("wheel");
+});
+
+quotesClose.addEventListener('click', () => {
+  showContent(track, quotes);
+})
 
 track.addEventListener('wheel', function(event){
   let deltaY = event.deltaY;
@@ -20,32 +31,20 @@ track.addEventListener('wheel', function(event){
   // event.preventDefault();
 });
 
-function showImage(){
-  track.style.display = "flex";
-  quotes.style.display = 'none';
-  setTimeout(function(){
-    track.style.opacity = "1";
-    track.style.transform = 'scale(100%, 100%)';
-  }, 100)
+function showContent(elemen1, elemen2){
+  elemen1.style.display = "flex";
+  elemen2.style.display = "none";
 }
 
-function imageClick(){
-  setTimeout(() => {
-    let images = document.getElementsByClassName('image');
-    for(let i = 0; i <= images.length -1; i++){
-      let img = images[i];
-      img.addEventListener('click', () => {
-        body.style.backgroundImage = `url('${img.src}')`;
-        track.style.transform = 'scale(50%, 50%)';
-        track.style.opacity = "0";
-          setTimeout(function() {
-            track.style.display = 'none';
-          }, 1000);
-      })
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      getQuotes();
     }
-    showQuotes();
-  }, 2000);
-}
+  });
+});
+const targetElement = quotes;
+observer.observe(targetElement);
 
 function addIdImage(imageID) {
   let data = JSON.parse(localStorage.getItem('data')) || [];
@@ -54,10 +53,10 @@ function addIdImage(imageID) {
   }
   data.push(imageID);
   localStorage.setItem('data', JSON.stringify(data));
-  let resultArray = JSON.parse(localStorage.getItem('data'));
   return
 }
-function showQuotes(){
+function getQuotes(){
+  console.log("Get Quotes Jalan");
   quotes.style.display = 'block';
   var category = 'happiness';
     $.ajax({
@@ -103,6 +102,7 @@ $.ajax({
     }
   }
 });
+
 
 
 // window.addEventListener('scroll', () => {
